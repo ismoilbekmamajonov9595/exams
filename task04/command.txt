@@ -1,0 +1,5 @@
+kubectl create deploy flask-app --image nvrbckdown/flask-app --port 5000 --replicas 1 -n exam-27 --dry-run=client -o yaml > flask-app-deploy.yaml 
+curl localhost:9527
+kubectl port-forward --address 0.0.0.0 pod/flask-app-745984f54c-62lzc 9527:5000 -n exam-27 7
+kubectl apply -f flask-app-deploy.yaml
+kubectl get pods -n exam-27 

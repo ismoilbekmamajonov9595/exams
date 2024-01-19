@@ -1,0 +1,4 @@
+NAME                   ENDPOINTS           AGE
+flask-app              10.233.68.71:5000   17m
+flask-app-nodeport     10.233.68.71:5000   138m
+fronted-app-nodeport   10.233.68.93:80     101m

@@ -1,0 +1,4 @@
+ kubectl expose deploy  frontend-app --name fronted-app-nodeport --port 80 --target-port 3000 --type NodePort -n exam-27
+
+
+curl 95.217.7.185:31532

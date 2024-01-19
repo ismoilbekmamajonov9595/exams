@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: flask-app
+  name: flask-app
+  namespace: exam-27
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flask-app
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: flask-app
+    spec:
+      containers:
+      - image: nvrbckdown/flask-app
+        name: flask-app
+        env:
+        - name: ENV
+          valueFrom:
+            configMapKeyRef:
+              name: info
+              key: ENV
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: info
+              key: LOG_LEVEL
+        - name: GRPC_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: info
+              key: GTPC_PORT
+        - name: DB_URI
+          valueFrom:
+            secretKeyRef:
+              name: database
+              key: DB_URI
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: MEMORY
+          valueFrom:
+            resourceFieldRef:
+              containerName: flask-app
+              resource: requests.memory
+        - name: CPU
+          valueFrom:
+            resourceFieldRef:
+              containerName: flask-app
+              resource: requests.cpu              
+        ports:
+        - containerPort: 5000
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+status: {}

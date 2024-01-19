@@ -1,0 +1,4 @@
+NAME                         ADDRESSTYPE   PORTS   ENDPOINTS                                              AGE
+flask-app-ft27f              IPv4          5000    10.233.66.147,10.233.68.71,10.233.69.202 + 1 more...   12m
+flask-app-nodeport-fzc9r     IPv4          5000    10.233.68.71,10.233.66.147,10.233.69.202 + 1 more...   132m
+fronted-app-nodeport-t65r6   IPv4          80      10.233.68.93                                           95m
